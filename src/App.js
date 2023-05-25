@@ -1,11 +1,15 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { useEffect } from "react";
-import firebase from "./firebase";
+import Main from "./pages/Main/Main";
+import Regist from "./pages/Regist/Regist";
+import User from "./pages/User/User";
+import Details from "./pages/Details/Details";
 
-function App() {
-  useEffect(() => console.log(firebase));
-  return <div className="App">app</div>;
-}
+const App = () => {
+  return (
+    <div>
+      {/* <Main /> */}
+      <Details />
+    </div>
+  );
+};
 
 export default App;
