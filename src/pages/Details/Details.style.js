@@ -34,3 +34,19 @@ export const PinImg = styled.img`
   background-color: lightgray;
   border-radius: 32px 0px 0px 32px;
 `;
+
+export const PinChat = styled.div`
+  width: 700px;
+  height: 700px;
+  border-radius: 0px 32px 32px 0px;
+`;
+
+export const PinChatBox = styled.div`
+  background-color: aliceblue;
+`;
+
+export const ChatTop = styled.div`
+  width: 700px;
+  height: 700px;
+  border-radius: 0px 32px 32px 0px;
+`;

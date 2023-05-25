@@ -1,25 +1,9 @@
 import * as S from "./Details.style";
 import backArrow from "./../../assets/directional-arrow-left.svg";
+import download from "./../../assets/download.svg";
+import ellipsis from "./../../assets/ellipsis.svg";
+import link from "./../../assets/link.svg";
 
-// const Details = () => {
-//   return (
-//     <>
-//       <S.Section>
-//         <S.BackIcon>
-//           <S.Svg src={backArrow} alt="back arrow" />
-//         </S.BackIcon>
-
-//         <S.Pin>
-//           <div
-//             style={{ width: "700px", height: "700px", backgroundColor: "gray" }}
-//           ></div>
-//         </S.Pin>
-//       </S.Section>
-//     </>
-//   );
-// };
-
-// export default Details;
 const Details = () => {
   return (
     <>
@@ -29,14 +13,10 @@ const Details = () => {
         </S.BackIcon>
 
         <S.Pin>
-          <S.PinImg alt="허허" />
-          <div
-            style={{
-              width: "700px",
-              height: "700px",
-              borderRadius: "0px 100px 100px 0px",
-            }}
-          ></div>
+          <S.PinImg alt="" />
+          <S.PinChat>
+            <S.PinChatBox></S.PinChatBox>
+          </S.PinChat>
         </S.Pin>
       </S.Section>
     </>
