@@ -7,15 +7,20 @@ import link from "./../../assets/link.svg";
 const Details = () => {
   return (
     <>
+      <S.BackIcon>
+        <S.BackArrow src={backArrow} alt="back arrow" />
+      </S.BackIcon>
       <S.Section>
-        <S.BackIcon>
-          <S.Svg src={backArrow} alt="back arrow" />
-        </S.BackIcon>
-
         <S.Pin>
           <S.PinImg alt="" />
           <S.PinChat>
-            <S.PinChatBox></S.PinChatBox>
+            <S.PinChatBox>
+              <S.PinHeader>
+                <S.ToolsIcons src={download} alt="download" />
+                <S.ToolsIcons src={ellipsis} alt="ellipsis" />
+                <S.ToolsIcons src={link} alt="link" />
+              </S.PinHeader>
+            </S.PinChatBox>
           </S.PinChat>
         </S.Pin>
       </S.Section>
