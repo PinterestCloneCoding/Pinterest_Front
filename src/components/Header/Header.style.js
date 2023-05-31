@@ -29,16 +29,3 @@ export const SearchBox = styled.div`
     align-items: center;
     padding-left: 12px;
 `;
-
-export const ButtonBox = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50px;
-    &:hover {
-        cursor: pointer;
-        background-color: #F1F1F1;
-    }
-`;

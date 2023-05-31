@@ -1,6 +1,8 @@
+import MediaPin from "../../components/common/MediaPin/MediaPin";
+
 const Main = () => {
     return (
-        <>Main</>
+        <MediaPin title="aaa" pinImg="" profileImg="" userName="d" />
     )
 }
 
