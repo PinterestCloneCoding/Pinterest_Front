@@ -1,21 +1,35 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const PinBox = styled.div`
     display: flex;
     flex-direction: column;
+    color: #111111;
+    font-size: 14px;
+    font-weight: bold;
+    gap: 5px;
+    margin: 10px 8px;
 `;
 
-export const PinImageBox = styled.div`
-    border-radius: 30px;
-    &:hover {
-        background-color:rgba(0, 0, 0, 0.2);
-        cursor: pointer;
-    }
+export const PinImageBox = styled.span`
+
 `;
 
-export const PintProfile = styled.div`
+export const PinProfile = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 2px;
-`
+`;
+
+export const NoneProfile = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50px;
+    background-color: #F1F1F1;
+    font-size: 15px;
+    font-weight: bold;
+`;

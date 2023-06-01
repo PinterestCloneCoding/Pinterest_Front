@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const Button = ({name, imgName, imgSize}) => {
+const Button = ({name, imgName, imgSize, type}) => {
     return (
         <ButtonBox>
             {name ? name : null}
