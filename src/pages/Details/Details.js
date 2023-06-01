@@ -51,13 +51,20 @@ const Details = () => {
               </S.Description>
 
               <S.PinFooter>
+                <S.WriterInfo>아</S.WriterInfo>
                 <S.CommentConatiner>
                   <S.CommentCount>
                     <div style={{ fontWeight: "700", fontSize: "27px" }}>
                       댓글 4개
                     </div>
                     <S.CommentButton>
-                      <S.CommentIcon src={arrowDown} alt="arrow-down" />
+                      <S.CommentIcon
+                        src={arrowDown}
+                        alt="arrow-down"
+                        style={{ transform: "rotate(270deg)" }}
+                      />
+                      {/* 그 머시냐.. 늘렸다 줄였다 해야댐
+                      <S.CommentIcon src={arrowDown} alt="arrow-down" /> */}
                     </S.CommentButton>
                   </S.CommentCount>
                 </S.CommentConatiner>

@@ -179,8 +179,11 @@ export const PinFooter = styled.div`
   align-items: center;
 `;
 
+/**쓴 사람 정보, 없는 것도 있어서 없는줄; */
+export const WriterInfo = styled.div``;
+
+/**댓글 */
 export const CommentConatiner = styled.div`
-  background-color: aliceblue;
   width: 100%;
   flex-direction: column;
   justify-content: center;
@@ -193,9 +196,11 @@ export const CommentCount = styled.div`
 `;
 
 export const CommentButton = styled.button`
+  margin-top: 5px;
+  margin-left: 5px;
   border-radius: 50px;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border: none;
 
   &:hover {
@@ -206,7 +211,7 @@ export const CommentButton = styled.button`
 `;
 
 export const CommentIcon = styled.img`
-  margin-top: 15px;
+  margin-top: 4px;
   width: 23px;
   height: 23px;
 `;
