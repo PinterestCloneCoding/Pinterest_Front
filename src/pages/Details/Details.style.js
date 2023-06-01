@@ -69,7 +69,6 @@ export const PinHeader = styled.div`
 `;
 
 export const ToolBox = styled.div`
-  /* background-color: aliceblue; */
   justify-content: center;
   align-items: center;
 `;
@@ -176,11 +175,41 @@ export const PinFooter = styled.div`
   margin: 70px auto auto 30px;
   width: 90;
   flex-direction: column;
-  align-items: center;
 `;
 
 /**쓴 사람 정보, 없는 것도 있어서 없는줄; */
-export const WriterInfo = styled.div``;
+export const WriterInfo = styled.div`
+  display: flex;
+  flex-direction: low;
+  align-items: center;
+`;
+
+export const WriterImg = styled.img`
+  width: 60px;
+  height: 60px;
+  background-color: lightgray;
+  border-radius: 30px;
+`;
+
+export const WriterTexts = styled.div`
+  margin: auto;
+  margin-left: 13px;
+`;
+
+export const WriterText = styled.div`
+  font-size: 18px;
+`;
+
+export const FollowButton = styled.button`
+  margin-right: 35px;
+  height: 70px;
+  width: 110px;
+  font-size: 20px;
+  font-weight: 700;
+
+  border-radius: 35px;
+  border: none;
+`;
 
 /**댓글 */
 export const CommentConatiner = styled.div`

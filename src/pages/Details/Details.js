@@ -51,7 +51,16 @@ const Details = () => {
               </S.Description>
 
               <S.PinFooter>
-                <S.WriterInfo>아</S.WriterInfo>
+                <S.WriterInfo>
+                  <S.WriterImg alt="" />
+                  <S.WriterTexts>
+                    <S.WriterText style={{ fontWeight: "700" }}>
+                      이름
+                    </S.WriterText>
+                    <S.WriterText>팔로워 0명</S.WriterText>
+                  </S.WriterTexts>
+                  <S.FollowButton>팔로우</S.FollowButton>
+                </S.WriterInfo>
                 <S.CommentConatiner>
                   <S.CommentCount>
                     <div style={{ fontWeight: "700", fontSize: "27px" }}>
