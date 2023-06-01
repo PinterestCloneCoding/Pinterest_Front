@@ -38,6 +38,30 @@ const Details = () => {
                   </S.SaveButton>
                 </S.ButtonBox>
               </S.PinHeader>
+
+              <S.Description>
+                <S.LinkText>
+                  <S.PageLink href="">히히 링크</S.PageLink>
+                </S.LinkText>
+                <S.Title>히히 제목</S.Title>
+                <S.InnerText>
+                  히히 내용히히 내용히히 내용히히 내용히히 내용히히 내용히히
+                  내용히히 내용히히 내용히히 내용
+                </S.InnerText>
+              </S.Description>
+
+              <S.PinFooter>
+                <S.CommentConatiner>
+                  <S.CommentCount>
+                    <div style={{ fontWeight: "700", fontSize: "27px" }}>
+                      댓글 4개
+                    </div>
+                    <S.CommentButton>
+                      <S.CommentIcon src={arrowDown} alt="arrow-down" />
+                    </S.CommentButton>
+                  </S.CommentCount>
+                </S.CommentConatiner>
+              </S.PinFooter>
             </S.PinChatBox>
           </S.PinChat>
         </S.Pin>
