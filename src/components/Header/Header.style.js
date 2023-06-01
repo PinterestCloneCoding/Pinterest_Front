@@ -6,6 +6,10 @@ export const HeaderBox = styled.div`
     justify-content: center;
     align-items: center;
     gap: 12px;
+
+    a {
+        text-decoration: none;
+    }
 `;
 
 export const InputField = styled.input`
@@ -19,13 +23,34 @@ export const InputField = styled.input`
 `;
 
 export const SearchBox = styled.div`
-    width: 80%;
-    height: 80%;
-    border: none;
-    border-radius: 24px;
-    background-color: #F1F1F1;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 12px;
+    background-color: #efefef;
+    height: 48px;
+    width: 100%;
+    border-radius: 50px;
+    border: none;
+    padding: 0px 0px 0px 12px;
+
+    form {
+        display: flex;
+        flex: 1;
+    }
+
+    form input {
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        margin-left: 5px;
+        font-size: 16px;
+    }
+
+    form button {
+        display: none;
+    }
+
+    input: focus {
+        outline: none;
+    }
 `;
