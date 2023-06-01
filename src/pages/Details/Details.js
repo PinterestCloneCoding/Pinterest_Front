@@ -3,6 +3,7 @@ import backArrow from "./../../assets/directional-arrow-left.svg";
 import download from "./../../assets/download.svg";
 import ellipsis from "./../../assets/ellipsis.svg";
 import link from "./../../assets/link.svg";
+import arrowDown from "./../../assets/arrow-down.svg";
 
 const Details = () => {
   return (
@@ -16,9 +17,26 @@ const Details = () => {
           <S.PinChat>
             <S.PinChatBox>
               <S.PinHeader>
-                <S.ToolsIcons src={download} alt="download" />
-                <S.ToolsIcons src={ellipsis} alt="ellipsis" />
-                <S.ToolsIcons src={link} alt="link" />
+                <S.ToolBox>
+                  <S.ToolsButton>
+                    <S.ToolsIcons src={ellipsis} alt="ellipsis" />
+                  </S.ToolsButton>
+                  <S.ToolsButton>
+                    <S.ToolsIcons src={download} alt="download" />
+                  </S.ToolsButton>
+                  <S.ToolsButton>
+                    <S.ToolsIcons src={link} alt="link" />
+                  </S.ToolsButton>
+                </S.ToolBox>
+                <S.ButtonBox>
+                  <S.ProfileButton>
+                    <div style={{ marginLeft: "10px" }}>프로필</div>
+                    <S.ProfileIcon src={arrowDown} alt="arrow-down" />
+                  </S.ProfileButton>
+                  <S.SaveButton>
+                    <div>저장</div>
+                  </S.SaveButton>
+                </S.ButtonBox>
               </S.PinHeader>
             </S.PinChatBox>
           </S.PinChat>

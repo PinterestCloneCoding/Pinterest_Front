@@ -13,15 +13,20 @@ export const Section = styled.section`
 export const BackIcon = styled.button`
   border-radius: 50px;
   margin-top: 16px;
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   border: none;
-  background-color: white;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+  background-color: inherit;
+  border-radius: 30px;
 `;
 
 export const BackArrow = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
 `;
 
 export const Pin = styled.div`
@@ -52,12 +57,67 @@ export const PinChatBox = styled.div`
 export const PinHeader = styled.div`
   width: 90%;
   justify-content: space-between;
-  height: 60px;
   margin: 32px auto 0px auto;
+  background-color: aliceblue;
+  display: flex;
+  margin-top: 70px;
+`;
+
+export const ToolBox = styled.div`
+  /* background-color: aliceblue; */
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ToolsButton = styled.button`
+  border-radius: 50px;
+  width: 70px;
+  height: 70px;
+  border: none;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+  background-color: inherit;
+  margin-left: 5px;
+  border-radius: 35px;
 `;
 
 export const ToolsIcons = styled.img`
-  width: 50px;
-  height: 50px;
-  background-color: aliceblue;
+  width: 28px;
+  height: 28px;
+`;
+
+export const ButtonBox = styled.div`
+  display: flex;
+`;
+
+export const ProfileButton = styled.button`
+  display: flex;
+  height: 70px;
+  width: 120px;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 35px;
+  border: none;
+  align-items: center;
+  background-color: inherit;
+`;
+
+export const ProfileIcon = styled.img`
+  margin-left: 7px;
+  width: 15px;
+  height: 15px;
+  color: black;
+`;
+
+export const SaveButton = styled.button`
+  margin-left: 5px;
+  height: 70px;
+  width: 90px;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  background-color: red;
+  border-radius: 35px;
+  border: none;
 `;
