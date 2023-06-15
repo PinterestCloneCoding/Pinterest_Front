@@ -1,6 +1,8 @@
 import * as S from "./Header.style";
 import search from "../../assets/search.svg";
 import Button from "../common/Button/Button";
+import NoticeModal from "../Modal/NoticeModal/NoticeModal";
+import AccountModal from "../Modal/AccountModal/AccountModal";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -44,6 +46,7 @@ const Header = () => {
                 imgName="bell" 
                 imgSize={24}
                 Icon 
+                // 알림 버튼 누르면 모달 창 보이게
                 onClick={() => {SetNoticeModal(!noticeModal);}}
             /> 
             {noticeModal && <NoticeModal />}
@@ -63,22 +66,6 @@ const Header = () => {
             {accountModal && <AccountModal />}
         </S.HeaderBox>
     );
-}
-
-const NoticeModal = () => {
-    return (
-        <>
-            Notice
-        </>
-    )
-}
-
-const AccountModal = () => {
-    return (
-        <>
-            Account
-        </>
-    )
 }
 
 export default Header;
