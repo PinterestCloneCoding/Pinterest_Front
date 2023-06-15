@@ -11,7 +11,7 @@ export const PinBox = styled.div`
 `;
 
 export const PinImageBox = styled.span`
-
+    
 `;
 
 export const PinProfile = styled.div`

@@ -1,23 +1,84 @@
 import * as S from "./Header.style";
 import search from "../../assets/search.svg";
 import Button from "../common/Button/Button";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 
 const Header = () => {
+    const [input, setInput] = useState(" ");
+    const [noticeModal, SetNoticeModal] = useState(false);
+    const [accountModal, SetAccountModal] = useState(false);
+
     return (
         <S.HeaderBox>
-            <Button imgName="logo-icon" imgSize={24} />
-            <Button name="홈" imgName="arrow-down" imgSize={12} />
-            <Button name="만들기" imgName="arrow-down" imgSize={12} />
+            <Link to={`/`}>
+                <Button 
+                    imgName="logo-icon" 
+                    imgSize={24} 
+                    Icon
+                />
+            </Link>
+            <Link to={`/`}>
+                <Button 
+                    name="홈" 
+                    default
+                />
+            </Link>
+            <Link to={`/create`}>
+                <Button 
+                    name="만들기" 
+                    imgName="arrow-down" 
+                    imgSize={12} 
+                    defaultIcon 
+                />
+            </Link>
             <S.SearchBox>
-                <img src={search} style={{width: '20px', height: '20px'}} alt="search"/>
-                <S.InputField placeholder="Search"/>
+                <img src={search} style={{width: '16px', height: '16px'}} alt="search"/>
+                <form>
+                        <input type="text" placeholder="Search" onChange={(e) => setInput(e.target.value)} />
+                        <button type="submit"></button>
+                </form>
             </S.SearchBox>
-            <Button imgName="bell" imgSize={24} />
-            <Button imgName="profile-image" imgSize={24} />
-            <Button imgName="arrow-down" imgSize={24} />
+            <Button 
+                imgName="bell" 
+                imgSize={24}
+                Icon 
+                onClick={() => {SetNoticeModal(!noticeModal);}}
+            /> 
+            {noticeModal && <NoticeModal />}
+            <Link to={`/user`}>
+                <Button 
+                    imgName="profile-image" 
+                    imgSize={24} 
+                    Icon
+                />            
+            </Link>
+            <Button 
+                imgName="arrow-down" 
+                imgSize={12} 
+                Icon
+                onClick={() => {SetAccountModal(!accountModal);}}
+            /> 
+            {accountModal && <AccountModal />}
         </S.HeaderBox>
     );
+}
+
+const NoticeModal = () => {
+    return (
+        <>
+            Notice
+        </>
+    )
+}
+
+const AccountModal = () => {
+    return (
+        <>
+            Account
+        </>
+    )
 }
 
 export default Header;
