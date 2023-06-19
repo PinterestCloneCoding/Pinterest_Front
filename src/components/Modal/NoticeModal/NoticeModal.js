@@ -5,9 +5,7 @@ const NoticeModal = () => {
     return (
         <ModalBox>
             <ModalBoxTop>
-                <TitleBox>
-                    <h1>업데이트</h1>
-                </TitleBox>
+                <p>업데이트</p>
                 <ContentList>
                     <UpdateContent
                         title=""
@@ -23,26 +21,31 @@ const NoticeModal = () => {
 }
 
 const ModalBox = styled.div`
+    width: 320px;
+    height: 80%;
+
     position: fixed;
+
+    top: 10%;
+    right: 0%;
+
+    border-radius: 16px;
+    background-color: gray;
 `;
 
 const ModalBoxTop = styled.div`
-    width: 370px;
+    width: 320px;
     height: 70px;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 16px;
 
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 8px -4px;
-    transition: box-shadow 300ms ease-in-out 0s;
-`;
 
-const TitleBox = styled.div`
-    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
 `;
 
 const ContentList = styled.div`

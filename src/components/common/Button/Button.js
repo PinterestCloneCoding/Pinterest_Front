@@ -24,6 +24,7 @@ const ButtonBox = styled.div`
     justify-content: center;
     align-items: center;
 
+    color: black;
     font-size: 16px;
     font-weight: 700;
     border-radius: 35px;
