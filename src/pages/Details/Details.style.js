@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
-/**맨 바깥 */
 export const Section = styled.section`
-  display: flex;
+  /* display: flex; */
   justify-content: initial;
   align-items: start;
   margin: 80px auto;
@@ -40,7 +39,6 @@ export const Pin = styled.div`
   margin-right: auto;
 `;
 
-/**왼쪽의 이미지 */
 export const PinImg = styled.img`
   width: 50%;
   height: 700px;
@@ -48,18 +46,19 @@ export const PinImg = styled.img`
   border-radius: 32px 0px 0px 32px;
 `;
 
-/**오른쪽의 공간 */
 export const PinChat = styled.div`
   width: 50%;
   border-radius: 0px 32px 32px 0px;
+  height: 100%;
 `;
 
 export const PinChatBox = styled.div`
   text-align: left;
   align-items: center;
+  margin: auto 10px;
+  height: 100%;
 `;
 
-/**맨 위쪽에 있는 뭐.. 아이콘들이랑 버튼 있는 거 */
 export const PinHeader = styled.div`
   width: 90%;
   justify-content: space-between;
@@ -126,7 +125,11 @@ export const SaveButton = styled.button`
   border: none;
 `;
 
-/**중간에 제목이나 내용 들어간 공간 */
+export const ScrollBox = styled.div`
+  max-height: 480px;
+  overflow-y: scroll;
+`;
+
 export const Description = styled.div`
   margin: 10px auto 0px auto;
   width: 90%;
@@ -170,14 +173,12 @@ export const InnerText = styled.p`
   text-align: left;
 `;
 
-/**맨 아래에 있는 뭐.. */
 export const PinFooter = styled.div`
   margin: 70px auto auto 30px;
   width: 90;
   flex-direction: column;
 `;
 
-/**쓴 사람 정보, 없는 것도 있어서 없는줄; */
 export const WriterInfo = styled.div`
   display: flex;
   flex-direction: low;
@@ -185,10 +186,10 @@ export const WriterInfo = styled.div`
 `;
 
 export const WriterImg = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   background-color: lightgray;
-  border-radius: 30px;
+  border-radius: 32px;
 `;
 
 export const WriterTexts = styled.div`
@@ -209,38 +210,4 @@ export const FollowButton = styled.button`
 
   border-radius: 35px;
   border: none;
-`;
-
-/**댓글 */
-export const CommentConatiner = styled.div`
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-`;
-
-export const CommentCount = styled.div`
-  align-items: center;
-  display: flex;
-`;
-
-export const CommentButton = styled.button`
-  margin-top: 5px;
-  margin-left: 5px;
-  border-radius: 50px;
-  width: 50px;
-  height: 50px;
-  border: none;
-
-  &:hover {
-    background-color: #f0f0f0;
-  }
-  background-color: inherit;
-  border-radius: 30px;
-`;
-
-export const CommentIcon = styled.img`
-  margin-top: 4px;
-  width: 23px;
-  height: 23px;
 `;

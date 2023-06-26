@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FB_API_KEY,
-  authDomain: process.env.REACT_APP_FB_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FB_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FB_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FB_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FB_API_ID,
-  measurementId: process.env.REACT_APP_FB_MAESUREMENT_ID,
+  apiKey: "AIzaSyDRgZSlEn5XBEApV59LF2GKEjnoOdAKpGI",
+  authDomain: "pinterclone.firebaseapp.com",
+  projectId: "pinterclone",
+  storageBucket: "pinterclone.appspot.com",
+  messagingSenderId: "1049084566422",
+  appId: "1:1049084566422:web:c7addcd6c3a93248fd1bb7",
+  measurementId: "G-94MLEME0TY"
 };
 
 const app = initializeApp(firebaseConfig);
