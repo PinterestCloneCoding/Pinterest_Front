@@ -21,16 +21,23 @@ const NoticeModal = () => {
 }
 
 const ModalBox = styled.div`
-    width: 320px;
+    width: 300px;
     height: 80%;
-
     position: fixed;
 
     top: 10%;
     right: 0%;
 
     border-radius: 16px;
-    background-color: gray;
+    background-color: white;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
+    font-size: 12px;
+    color: #111111;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 4px 15px;
 `;
 
 const ModalBoxTop = styled.div`

@@ -12,16 +12,16 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-      <div className="App">
         <Header />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/details" element={<Details />} />
-          <Route path="/regist" element={<Regist />} />
-          <Route path="/user" element={<User />} />
-        </Routes>
-      </div>
+        <div style={{marginTop: "70px"}}>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/create" element={<Create />} />
+            <Route path="/details" element={<Details />} />
+            <Route path="/regist" element={<Regist />} />
+            <Route path="/user" element={<User />} />
+          </Routes>
+        </div>
     </BrowserRouter>
     </div>
   )

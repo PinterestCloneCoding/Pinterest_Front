@@ -1,16 +1,45 @@
 import * as S from "./Header.style";
+import { db, authService } from "../../firebase";
+import { collection, connectFirestoreEmulator, getDocs } from "firebase/firestore";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
 import search from "../../assets/search.svg";
 import Button from "../common/Button/Button";
 import NoticeModal from "../Modal/NoticeModal/NoticeModal";
 import AccountModal from "../Modal/AccountModal/AccountModal";
+
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 
 const Header = () => {
     const [input, setInput] = useState(" ");
+    const [user, setUser] = useState(null);
     const [noticeModal, SetNoticeModal] = useState(false);
     const [accountModal, SetAccountModal] = useState(false);
+
+    const handleGoogleLogin = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(authService, provider)
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    const handleLogout = () => {
+        authService
+        .signOut()
+        .then(() => {
+            setUser(null);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
 
     return (
         <S.HeaderBox>
@@ -50,13 +79,21 @@ const Header = () => {
                 onClick={() => {SetNoticeModal(!noticeModal);}}
             /> 
             {noticeModal && <NoticeModal />}
-            <Link to={`/user`}>
+            {user ? (
+                <Link to={`/user`}>
                 <Button 
                     imgName="profile-image" 
                     imgSize={24} 
                     Icon
                 />            
             </Link>
+            ) : (
+                <Button
+                    name="로그인"
+                    primary
+                    onClick={handleGoogleLogin}
+                />
+            )}
             <Button 
                 imgName="arrow-down" 
                 imgSize={12} 
