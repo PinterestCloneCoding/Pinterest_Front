@@ -1,5 +1,11 @@
 import { styled } from "styled-components";
 import Masonry from "react-masonry-css";
+import { Link } from "react-router-dom";
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
+`;
 
 export const Wrapper = styled.div`
   display: flex;

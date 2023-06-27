@@ -5,17 +5,20 @@ import ellipsis from "./../../assets/ellipsis.svg";
 
 import link from "./../../assets/link.svg";
 import arrowDown from "./../../assets/arrow-down.svg";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import CommentContainer from "../../components/Details/CommentBox";
 
 const Details = () => {
+  const { pinId } = useParams();
+
   return (
     <>
-      <S.BackIcon>
-        <S.BackArrow src={backArrow} alt="back arrow" />
-      </S.BackIcon>
-
+      <Link to={`/`}>
+        <S.BackIcon>
+          <S.BackArrow src={backArrow} alt="back arrow" />
+        </S.BackIcon>
+      </Link>
       <S.Section>
         <S.Pin>
           <S.PinImg alt="" />
