@@ -30,6 +30,8 @@ export const CommentIcon = styled.img`
   margin-top: 4px;
   width: 23px;
   height: 23px;
+
+  fill: red;
 `;
 
 export const CommentInfo = styled.div`
@@ -53,8 +55,10 @@ export const CommentText = styled.div`
 `;
 
 export const CommentBottom = styled.span`
-  background-color: aliceblue;
   display: flex;
   flex-direction: low;
   gap: 40px;
+
+  align-items: center;
+  color: gray;
 `;

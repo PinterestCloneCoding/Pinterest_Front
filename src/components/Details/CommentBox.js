@@ -3,8 +3,8 @@ import CommentData from "../../mocks/dummy_comment";
 
 import * as S from "./CommentBox.style";
 import arrowDown from "./../../assets/arrow-down.svg";
-import ellipsis from "./../../assets/ellipsis.svg";
-import like from "./../../assets/like.svg";
+import ellipsis from "./../../assets/ellipsis_gray.svg";
+import like from "./../../assets/like_gray.svg";
 
 const CommentBox = () => {
   const [isDrop, setIsDrop] = useState(false);
@@ -65,7 +65,7 @@ const CommentBox = () => {
                     display: "flex",
                   }}
                 >
-                  <img
+                  <S.CommentIcon
                     src={like}
                     alt="like"
                     style={{
@@ -76,11 +76,7 @@ const CommentBox = () => {
                   200
                 </S.CommentText>
                 <S.CommentText>
-                  <img
-                    src={ellipsis}
-                    alt="ellipsis"
-                    style={{ width: "15px", height: "15px" }}
-                  />
+                  <S.CommentIcon src={ellipsis} alt="ellipsis" />
                 </S.CommentText>
               </S.CommentBottom>
             </S.CommentInfo>
