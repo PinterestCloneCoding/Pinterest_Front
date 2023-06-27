@@ -1,5 +1,4 @@
 import React from "react";
-import Masonry from "react-masonry-css";
 import MediaPin from "../../components/common/MediaPin/MediaPin";
 import PinData from "../../mocks/dummy";
 
@@ -12,10 +11,7 @@ const Main = () => {
 
   return (
     <S.Wrapper>
-      <S.MyMasonryGrid
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-      >
+      <S.MyMasonryGrid breakpointCols={breakpointColumnsObj}>
         {PinData &&
           PinData.map((item) => (
             <div key={item.id}>
