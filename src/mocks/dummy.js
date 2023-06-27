@@ -40,6 +40,30 @@ const PinData = [
     profileImg: "",
     userName: "젤",
   },
+  {
+    id: 2,
+    title: "넙떡젤리",
+    pinImg:
+      "https://i.pinimg.com/236x/e9/77/d4/e977d41db3db9fe04ca633dec626e90f.jpg",
+    profileImg: "",
+    userName: "젤",
+  },
+  {
+    id: 2,
+    title: "넙떡젤리",
+    pinImg:
+      "https://i.pinimg.com/236x/e9/77/d4/e977d41db3db9fe04ca633dec626e90f.jpg",
+    profileImg: "",
+    userName: "젤",
+  },
+  {
+    id: 2,
+    title: "넙떡젤리",
+    pinImg:
+      "https://i.pinimg.com/236x/e9/77/d4/e977d41db3db9fe04ca633dec626e90f.jpg",
+    profileImg: "",
+    userName: "젤",
+  },
 ];
 
 export default PinData;
