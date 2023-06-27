@@ -1,6 +1,6 @@
 import React from "react";
 import MediaPin from "../../components/common/MediaPin/MediaPin";
-import { PinData } from "../../mocks/dummy";
+import PinData from "../../mocks/dummy";
 
 import * as S from "./Main.style";
 
