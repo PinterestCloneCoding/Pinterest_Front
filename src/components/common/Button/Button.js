@@ -23,7 +23,6 @@ const ButtonBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
     color: black;
     font-size: 16px;
     font-weight: 700;
@@ -76,6 +75,17 @@ const ButtonBox = styled.div`
                 cursor: pointer;
                 background-color: #9B0000;
             }
+        `
+    }
+
+    ${(props) => 
+        props.defaultLong &&
+        css `
+            width: 100%;
+            justify-content: flex-start;
+            align-items: center;
+            border-radius: 5px;
+            padding: 8px 6px;
         `
     }
 
