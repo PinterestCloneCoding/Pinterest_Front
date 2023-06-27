@@ -24,6 +24,7 @@ const ButtonBox = styled.div`
     justify-content: center;
     align-items: center;
 
+    color: black;
     font-size: 16px;
     font-weight: 700;
     border-radius: 35px;
@@ -61,9 +62,10 @@ const ButtonBox = styled.div`
         props.primary &&
         css`
             margin-left: 5px;
-            width: 84px;
-            height: 48px;
-            font-size: 20px;
+            width: 70px;
+            height: 36px;
+            padding: 6px 12px;
+            font-size: 14px;
             font-weight: 700;
             color: white;
             background-color: red;

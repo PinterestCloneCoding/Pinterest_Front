@@ -1,6 +1,17 @@
 import styled from "styled-components";
 
 export const HeaderBox = styled.div`
+    position: fixed;
+
+    width: 100%;
+    height: 70px;
+    background-color: white;
+
+    margin: 0px;
+
+    top: 0%;
+    left: 0%;
+    
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -10,6 +21,8 @@ export const HeaderBox = styled.div`
     a {
         text-decoration: none;
     }
+
+    box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.05);
 `;
 
 export const InputField = styled.input`
