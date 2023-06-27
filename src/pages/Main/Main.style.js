@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import Masonry from "react-masonry-css";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -12,9 +13,8 @@ export const Wrapper = styled.div`
   margin-top: 15px;
 `;
 
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Four columns */
-  grid-gap: 15px;
-  background-color: white;
+export const MyMasonryGrid = styled(Masonry)`
+  display: flex;
+  margin-left: -15px;
+  width: auto;
 `;

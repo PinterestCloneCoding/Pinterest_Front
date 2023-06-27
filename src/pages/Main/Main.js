@@ -1,25 +1,29 @@
 import React from "react";
-import styled from "styled-components";
 import MediaPin from "../../components/common/MediaPin/MediaPin";
 import PinData from "../../mocks/dummy";
 
 import * as S from "./Main.style";
 
 const Main = () => {
+  const breakpointColumnsObj = {
+    default: 5,
+  };
+
   return (
     <S.Wrapper>
-      <S.Container>
+      <S.MyMasonryGrid breakpointCols={breakpointColumnsObj}>
         {PinData &&
           PinData.map((item) => (
-            <MediaPin
-              key={item.id}
-              title={item.title}
-              pinImg={item.pinImg}
-              profileImg={item.profileImg}
-              userName={item.userName}
-            />
+            <div key={item.id}>
+              <MediaPin
+                title={item.title}
+                pinImg={item.pinImg}
+                profileImg={item.profileImg}
+                userName={item.userName}
+              />
+            </div>
           ))}
-      </S.Container>
+      </S.MyMasonryGrid>
     </S.Wrapper>
   );
 };

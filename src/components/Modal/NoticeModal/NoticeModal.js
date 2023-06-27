@@ -1,18 +1,20 @@
 import styled, { css } from "styled-components";
 import UpdateContent from "./UpdateContent";
+import updateData from "../../../mocks/updateDummy";
 
 const NoticeModal = () => {
     return (
         <ModalBox>
             <ModalBoxTop>
                 <p>업데이트</p>
-                <ContentList>
-                    <UpdateContent
-                        title=""
-                        postTime={1}
-                    /> 
-                </ContentList>
             </ModalBoxTop>
+            <ContentList>
+                {updateData.map((item) => (
+                    <UpdateContent
+                        topic={item.topic} count={item.count} date={item.date} url1={item.url1} url2={item.url2} url3={item.url3}
+                    />
+                ))}
+                </ContentList>
             <ModalBoxBottom>
 
             </ModalBoxBottom>
@@ -56,7 +58,8 @@ const ModalBoxTop = styled.div`
 `;
 
 const ContentList = styled.div`
-
+    width: 320px;
+    overflow: scroll;
 `;
 
 const ModalBoxBottom = styled.div`

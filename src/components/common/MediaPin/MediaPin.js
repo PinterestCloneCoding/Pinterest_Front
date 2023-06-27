@@ -10,7 +10,7 @@ const MediaPin = ({ title, pinImg, profileImg, userName }) => {
             alt={pinImg}
             style={{
               height: "auto",
-              maxWidth: "100%",
+              width: "93%",
               borderRadius: "30px",
             }}
           />

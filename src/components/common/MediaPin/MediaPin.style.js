@@ -7,7 +7,9 @@ export const PinBox = styled.div`
   font-size: 14px;
   font-weight: bold;
   gap: 5px;
-  margin: 10px 8px;
+
+  width: 350px;
+  margin-bottom: 15px;
 `;
 
 export const PinImageBox = styled.span``;
