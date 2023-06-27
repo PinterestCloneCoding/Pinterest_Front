@@ -1,5 +1,5 @@
 import MediaPin from "../../components/common/MediaPin/MediaPin";
-import PinData from "../../mocks/dummy";
+import { PinData } from "../../mocks/dummy";
 
 
 const Main = () => {

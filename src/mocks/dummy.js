@@ -15,4 +15,4 @@ const PinData = [
     }
 ];
 
-export default PinData;
+export { PinData };
