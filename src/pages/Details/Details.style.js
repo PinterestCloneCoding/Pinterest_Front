@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import Masonry from "react-masonry-css";
+import { Link } from "react-router-dom";
 
 export const Section = styled.section`
-  /* display: flex; */
   justify-content: initial;
   align-items: start;
-  margin: 80px auto;
+  margin: 10px auto;
   width: 70%;
   border-radius: 32px;
   box-shadow: 0 1px 20px 0 rgb(0 0 0 / 10%);
@@ -210,4 +211,29 @@ export const FollowButton = styled.button`
 
   border-radius: 35px;
   border: none;
+`;
+
+// 메인 꺼 갖다쓰기
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 15px;
+`;
+
+export const MyMasonryGrid = styled(Masonry)`
+  display: flex;
+  margin-left: -15px;
+  width: auto;
 `;

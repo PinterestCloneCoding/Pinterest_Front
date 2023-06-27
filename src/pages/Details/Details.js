@@ -9,7 +9,15 @@ import { Link, useParams } from "react-router-dom";
 
 import CommentContainer from "../../components/Details/CommentBox";
 
+// 곧 지울거
+import PinData from "../../mocks/dummy";
+import MediaPin from "../../components/common/MediaPin/MediaPin";
+
 const Details = () => {
+  const breakpointColumnsObj = {
+    default: 5,
+  };
+
   const { pinId } = useParams();
 
   return (
@@ -19,6 +27,7 @@ const Details = () => {
           <S.BackArrow src={backArrow} alt="back arrow" />
         </S.BackIcon>
       </Link>
+
       <S.Section>
         <S.Pin>
           <S.PinImg alt="" />
@@ -88,6 +97,36 @@ const Details = () => {
           </S.PinChat>
         </S.Pin>
       </S.Section>
+
+      {/* 지금까지 핀이었고 */}
+
+      <div
+        style={{
+          textAlign: "center",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1>유사한 핀 더보기</h1>
+      </div>
+
+      <S.Wrapper>
+        <S.MyMasonryGrid breakpointCols={breakpointColumnsObj}>
+          {PinData &&
+            PinData.map((item) => (
+              <div key={item.id}>
+                <S.StyledLink to={`/pin/${item.id}`}>
+                  <MediaPin
+                    title={item.title}
+                    pinImg={item.pinImg}
+                    profileImg={item.profileImg}
+                    userName={item.userName}
+                  />
+                </S.StyledLink>
+              </div>
+            ))}
+        </S.MyMasonryGrid>
+      </S.Wrapper>
     </>
   );
 };
