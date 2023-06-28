@@ -44,6 +44,7 @@ const HandleImageUpload = () => {
     }
   }, [imageUpload]);
 
+  // 파이어베이스에 이미지 저장
   const uploadImgUrl = async () => {
     await addDoc(collection(db, "photo"), {
       imgUrl: image,
@@ -67,30 +68,43 @@ const HandleImageUpload = () => {
   }, []);
 
   return (
-    <UploadArea onClick={onClickUpload}>
-      <input
-        type="file"
-        onChange={(event) => {
-          selectFile(event.target.files[0]);
-        }}
-        ref={fileInput}
-        style={{ display: "none" }}
-      />        
-        <Button imgName="arrow-circle-up" Icon>
-            업로드
-        </Button>
-        <Desc>끌어다 놓거나 클릭하여 이미<br/>지 또는 동영상을 추가하세요</Desc>
-        <Tip>Pinterest는 20MB 미만의 고화질 .jpg 파일 또는 100MB 미만의 .mp4 파일 사용을 권장합니다.</Tip>
-      <ImageList>
-        {imageList.map((imageUrl, index) => (
-          <img key={index} src={imageUrl} alt={`Image ${index}`} />
-        ))}
-      </ImageList>
-    </UploadArea>
+    <UploadBox>
+        <UploadArea onClick={onClickUpload}>
+            <input
+                type="file"
+                onChange={(event) => {
+                selectFile(event.target.files[0]);
+                }}
+                ref={fileInput}
+                style={{ display: "none" }}
+            />        
+            <Button imgName="arrow-circle-up" Icon>
+                업로드
+            </Button>
+            <Desc>끌어다 놓거나 클릭하여 이미<br/>지 또는 동영상을 추가하세요</Desc>
+            <Tip>Pinterest는 20MB 미만의 고화질 .jpg 파일 또는 100MB 미만의 .mp4 파일 사용을 권장합니다.</Tip>
+            {/* <ImageList>
+                {imageList.map((imageUrl, index) => (
+                <img key={index} src={imageUrl} alt={`Image ${index}`} />
+                ))}
+            </ImageList> */}
+            {image ? (
+                <ShowImageArea style={{backgroundImage: `url(${image})`}}>
+                    제발업로드돼랃제발요
+                </ShowImageArea>
+            ) : (
+                null
+            )}
+        </UploadArea>
+    </UploadBox>
   );
 };
 
 export default HandleImageUpload;
+
+const UploadBox = styled.div`
+
+`;
 
 const UploadArea = styled.div`
     display: flex;
@@ -120,4 +134,13 @@ const ImageList = styled.div`
     object-fit: cover;
     margin: 10px;
   }
+`;
+
+const ShowImageArea = styled.div`
+    background-size: "cover";
+    background-repeat: no-repeat;
+    background-position: "center";
+
+    width: 100%;
+    height: 100%;
 `;
