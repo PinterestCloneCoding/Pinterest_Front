@@ -17,6 +17,22 @@ const CommentBox = ({ comments }) => {
     setIsDrop(!isDrop);
   };
 
+  const formatTimestamp = (timestamp) => {
+    const currentTimestamp = Date.now() / 1000; // Get current timestamp in seconds
+    const commentTimestamp = timestamp.seconds; // Assuming the timestamp is in seconds
+
+    const elapsedSeconds = currentTimestamp - commentTimestamp;
+    const elapsedHours = Math.floor(elapsedSeconds / 3600); // Convert seconds to hours
+
+    if (elapsedHours === 0) {
+      return "0h";
+    } else if (elapsedHours === 1) {
+      return "1h";
+    } else {
+      return `${elapsedHours}h`;
+    }
+  };
+
   return (
     <div>
       <S.CommentCount>
@@ -60,11 +76,7 @@ const CommentBox = ({ comments }) => {
               </S.CommentTexts>
 
               <S.CommentBottom>
-                <S.CommentText>
-                  {/*  */}
-                  {/* {item.timestamp.seconds} */}
-                  시간
-                </S.CommentText>
+                <S.CommentText>{formatTimestamp(item.timestamp)}</S.CommentText>
                 <S.CommentText
                   style={{
                     fontWeight: "700",
