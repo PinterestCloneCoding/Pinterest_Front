@@ -9,11 +9,12 @@ import {
   query,
 } from "firebase/firestore";
 import { ref, getStorage, getDownloadURL, uploadBytes } from "firebase/storage";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../common/Button/Button";
 
 const HandleImageUpload = () => {
+  const navigate = useNavigate();
   const fileInput = useRef(null);
 
   const [imageUpload, setImageUpload] = useState(null);
@@ -36,7 +37,6 @@ const HandleImageUpload = () => {
     const file = event.target.files[0];
     setImageUpload(file);
     setUploadStep(2);
-    console.log("선택됨");
     setChange(1);
   };
 
@@ -69,6 +69,8 @@ const HandleImageUpload = () => {
     setImageUpload(null);
     setImage("");
     setUploadStep(1);
+
+    navigate(`/`);
   };
 
   async function fetchImages() {
