@@ -42,7 +42,7 @@ export const Pin = styled.div`
 
 export const PinImg = styled.img`
   width: 50%;
-  height: 700px;
+  height: 50%;
   background-color: lightgray;
   border-radius: 32px 0px 0px 32px;
 `;

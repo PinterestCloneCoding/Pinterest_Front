@@ -118,7 +118,7 @@ const HandleImageUpload = () => {
             </div>
           </UploadHeader>
           <ModalBox
-            style={{ display: "flex", marginRight: "auto", backgroundColor: "white", height: "90%", marginTop: "100px" }}
+            style={{ flexDirection: "row", marginRight: "auto", backgroundColor: "white", height: "90%", marginTop: "100px" }}
           >
             <ShowImageArea
               style={{
@@ -232,7 +232,7 @@ const ModalBox = styled.div`
   background-color: white;
   box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.05);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   gap: 4px;
