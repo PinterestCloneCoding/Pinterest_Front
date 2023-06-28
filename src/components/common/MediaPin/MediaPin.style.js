@@ -8,7 +8,7 @@ export const PinBox = styled.div`
   font-weight: bold;
   gap: 5px;
 
-  width: 350px;
+  width: auto;
   margin-bottom: 15px;
 `;
 

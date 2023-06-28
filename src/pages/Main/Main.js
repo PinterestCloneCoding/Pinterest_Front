@@ -28,7 +28,7 @@ const Main = () => {
   }, []);
 
   const breakpointColumnsObj = {
-    default: 5,
+    default: 4,
   };
 
   return (
