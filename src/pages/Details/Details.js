@@ -12,11 +12,35 @@ import CommentContainer from "../../components/Details/CommentBox";
 // 곧 지울거
 import PinData from "../../mocks/dummy";
 import MediaPin from "../../components/common/MediaPin/MediaPin";
+import { useEffect, useState } from "react";
+
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const Details = () => {
+  const [pinData, setPinData] = useState([]);
+
   const breakpointColumnsObj = {
     default: 5,
   };
+
+  useEffect(() => {
+    const fetchPinData = async () => {
+      const pinsCollection = collection(db, "photo");
+      const pinsSnapshot = await getDocs(pinsCollection);
+      const newPinData = [];
+      pinsSnapshot.forEach((doc) => {
+        const pin = {
+          id: doc.id,
+          ...doc.data(),
+        };
+        newPinData.push(pin);
+      });
+      setPinData(newPinData);
+    };
+
+    fetchPinData();
+  }, []);
 
   const { pinId } = useParams();
 
@@ -112,13 +136,13 @@ const Details = () => {
 
       <S.Wrapper>
         <S.MyMasonryGrid breakpointCols={breakpointColumnsObj}>
-          {PinData &&
-            PinData.map((item) => (
-              <div key={item.id}>
+          {pinData &&
+            pinData.map((item, index) => (
+              <div key={index}>
                 <S.StyledLink to={`/pin/${item.id}`}>
                   <MediaPin
                     title={item.title}
-                    pinImg={item.pinImg}
+                    pinImg={item.imgUrl}
                     profileImg={item.profileImg}
                     userName={item.userName}
                   />
