@@ -9,6 +9,7 @@ export const CommnetContainer = styled.div`
 export const CommentCount = styled.div`
   align-items: center;
   display: flex;
+  margin: 25px auto;
 `;
 
 export const CommentButton = styled.button`
@@ -44,19 +45,21 @@ export const CommentImg = styled.img`
   height: 32px;
   background-color: lightgray;
   border-radius: 30px;
+  margin: 0px 4px;
 `;
 
 export const CommentTexts = styled.div`
   display: flex;
 `;
 
-export const CommentText = styled.div`
-  font-size: 18px;
+export const CommentText = styled.span`
+  font-size: 16px;
+  margin: 0 4px;
 `;
 
 export const CommentBottom = styled.span`
   display: flex;
-  flex-direction: low;
+  flex-direction: row;
   gap: 40px;
 
   align-items: center;
