@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { storage, db, app } from "../../firebase";
+import { storage, db, app, authService } from "../../firebase";
 import {
   addDoc,
   collection,
@@ -25,6 +25,8 @@ const HandleImageUpload = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
+  const [profileImage, setProfileImage] = useState("");
+  const [nickname, setNickname] = useState("");
 
   const [change, setChange] = useState(0);
 
@@ -59,12 +61,16 @@ const HandleImageUpload = () => {
       description: description,
       link: link,
       imgUrl: image,
+      profileImage: profileImage,
+      nickname: nickname,
       timestamp: new Date(),
     });
 
     setTitle("");
     setDescription("");
     setLink("");
+    setProfileImage("");
+    setNickname("");
     fetchImages();
     setImageUpload(null);
     setImage("");
@@ -84,6 +90,18 @@ const HandleImageUpload = () => {
 
   useEffect(() => {
     fetchImages();
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = authService.onAuthStateChanged((user) => {
+      console.log(user);
+      // if (user) {
+      setNickname(user.displayName);
+      setProfileImage(user.photoURL);
+      // }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   return (

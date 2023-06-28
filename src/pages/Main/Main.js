@@ -41,8 +41,8 @@ const Main = () => {
                 <MediaPin
                   title={item.title}
                   pinImg={item.imgUrl}
-                  profileImg={item.profileImg}
-                  userName={item.userName}
+                  profileImg={item.profileImage}
+                  userName={item.nickname}
                 />
               </StyledLink>
             </div>
