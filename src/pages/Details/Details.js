@@ -13,18 +13,38 @@ import CommentContainer from "../../components/Details/CommentBox";
 import MediaPin from "../../components/common/MediaPin/MediaPin";
 import { useEffect, useState } from "react";
 
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  serverTimestamp,
+} from "firebase/firestore";
+import { authService, db } from "../../firebase";
 import Button from "../../components/common/Button/Button";
 
 const Details = () => {
   const { pinId } = useParams();
+  const [profileImage, setProfileImage] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [commentText, setCommentText] = useState("");
+
+  const [comments, setComments] = useState([]);
 
   const [pinData, setPinData] = useState([]);
   const [selectedPin, setSelectedPin] = useState(undefined);
   const breakpointColumnsObj = {
     default: 5,
   };
+
+  useEffect(() => {
+    const unsubscribe = authService.onAuthStateChanged((user) => {
+      console.log(user);
+      setNickname(user.displayName);
+      setProfileImage(user.photoURL);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     const fetchPinData = async () => {
@@ -38,15 +58,55 @@ const Details = () => {
         };
         newPinData.push(pin);
       });
+
       setPinData(newPinData);
     };
 
+    const fetchComments = async () => {
+      const commentsCollection = collection(db, "comments");
+      const commentsSnapshot = await getDocs(commentsCollection);
+      const newComments = [];
+      commentsSnapshot.forEach((doc) => {
+        const comment = {
+          id: doc.id,
+          ...doc.data(),
+        };
+        newComments.push(comment);
+      });
+      setComments(newComments);
+    };
+
     fetchPinData();
+    fetchComments();
   }, []);
 
   useEffect(() => {
     setSelectedPin(pinData.find((pin) => pin.id === pinId));
   }, [pinData, pinId]);
+
+  const submitComment = async () => {
+    try {
+      const user = authService.currentUser;
+      if (!user) {
+        return;
+      }
+
+      const newComment = {
+        text: commentText,
+        profileImage: profileImage,
+        nickname: nickname,
+        timestamp: serverTimestamp(),
+        heartCount: 0,
+      };
+
+      const commentsCollection = collection(db, "comments");
+      await addDoc(commentsCollection, newComment);
+
+      setCommentText("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -157,7 +217,16 @@ const Details = () => {
                     {/* <S.FollowButton>팔로우</S.FollowButton> */}
                   </S.WriterInfo>
 
-                  <CommentContainer />
+                  <CommentContainer comments={comments} />
+
+                  <div>
+                    <input
+                      placeholder="댓글을 입력하세요"
+                      value={commentText}
+                      onChange={(e) => setCommentText(e.target.value)}
+                    />
+                    <button onClick={submitComment}>등록</button>
+                  </div>
                 </S.PinFooter>
               </S.ScrollBox>
             </S.PinChatBox>
