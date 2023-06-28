@@ -5,24 +5,22 @@ import Button from "../common/Button/Button";
 
 import heart from "./../../assets/like_gray.svg";
 import ellipsis from "./../../assets/ellipsis_gray.svg";
+import { collection, doc, increment, updateDoc } from "@firebase/firestore";
+import { db } from "../../firebase";
 
 const CommentBox = ({ comments }) => {
   const [isDrop, setIsDrop] = useState(false);
-
-  useEffect(() => {
-    console.log("그머냐.. 댓글들입니다", comments);
-  }, []);
+  const [like, setLike] = useState(0);
 
   const dropComment = () => {
     setIsDrop(!isDrop);
   };
 
   const formatTimestamp = (timestamp) => {
-    const currentTimestamp = Date.now() / 1000; // Get current timestamp in seconds
-    const commentTimestamp = timestamp.seconds; // Assuming the timestamp is in seconds
-
+    const currentTimestamp = Date.now() / 1000;
+    const commentTimestamp = timestamp.seconds;
     const elapsedSeconds = currentTimestamp - commentTimestamp;
-    const elapsedHours = Math.floor(elapsedSeconds / 3600); // Convert seconds to hours
+    const elapsedHours = Math.floor(elapsedSeconds / 3600);
 
     if (elapsedHours === 0) {
       return "0h";
@@ -30,6 +28,19 @@ const CommentBox = ({ comments }) => {
       return "1h";
     } else {
       return `${elapsedHours}h`;
+    }
+  };
+
+  const incrementHeartCount = async (commentId) => {
+    try {
+      const commentsRef = collection(db, "comments");
+      const commentDocRef = doc(commentsRef, commentId);
+
+      await updateDoc(commentDocRef, {
+        heartCount: increment(1),
+      });
+    } catch (error) {
+      console.log("으악 하트를 눌렀는데 에러가 나", error);
     }
   };
 
@@ -92,6 +103,10 @@ const CommentBox = ({ comments }) => {
                       width: "20px",
                       height: "20px",
                       margin: "0px 6px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => {
+                      incrementHeartCount(item.id);
                     }}
                   />
                   {item.heartCount}
