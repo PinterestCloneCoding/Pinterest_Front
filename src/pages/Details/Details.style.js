@@ -69,14 +69,15 @@ export const PinHeader = styled.div`
 `;
 
 export const ToolBox = styled.div`
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 `;
 
 export const ToolsButton = styled.button`
   border-radius: 50px;
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border: none;
   &:hover {
     background-color: #f0f0f0;
@@ -163,19 +164,19 @@ export const PageLink = styled.a`
 `;
 
 export const Title = styled.h1`
-  font-weight: 700;
-  font-size: 36px;
+  font-weight: 650;
+  font-size: 28px;
 `;
 
 export const InnerText = styled.p`
   width: 100;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   text-align: left;
 `;
 
 export const PinFooter = styled.div`
-  margin: 70px auto auto 30px;
+  margin: 50px auto auto 20px;
   width: 90;
   flex-direction: column;
 `;
@@ -187,8 +188,8 @@ export const WriterInfo = styled.div`
 `;
 
 export const WriterImg = styled.img`
-  width: 64px;
-  height: 64px;
+  width: 52px;
+  height: 52px;
   background-color: lightgray;
   border-radius: 32px;
 `;
@@ -199,7 +200,7 @@ export const WriterTexts = styled.div`
 `;
 
 export const WriterText = styled.div`
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 export const FollowButton = styled.button`
