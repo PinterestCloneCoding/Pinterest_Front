@@ -55,14 +55,16 @@ const AccountModal = () => {
         <ModalBox>
             <LoginAccountBox>
                 <p>현재 로그인 계정</p>
-                <MyAccount>
-                    <LoginedAccount 
-                        img={profileImage}
-                        name={nickname}
-                        personnal={true}
-                        email={email}
-                    />
-                </MyAccount>
+                <Link to={`/user`}>
+                    <MyAccount>
+                        <LoginedAccount 
+                            img={profileImage}
+                            name={nickname}
+                            personnal={true}
+                            email={email}
+                        />
+                    </MyAccount>
+                </Link>
             </LoginAccountBox>
             <MyAccountInfoBox>
                 <p>내 계정</p>
