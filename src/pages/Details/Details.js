@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
+import Button from "../../components/common/Button/Button";
 
 const Details = () => {
   const [pinData, setPinData] = useState([]);
@@ -60,19 +61,37 @@ const Details = () => {
               <S.PinHeader>
                 <S.ToolBox>
                   <S.ToolsButton>
-                    <S.ToolsIcons src={ellipsis} alt="ellipsis" />
+                    <S.ToolsIcons
+                      src={ellipsis}
+                      alt="ellipsis"
+                      style={{ width: "18px", height: "18px" }}
+                    />
                   </S.ToolsButton>
                   <S.ToolsButton>
-                    <S.ToolsIcons src={download} alt="download" />
+                    <S.ToolsIcons
+                      src={download}
+                      alt="download"
+                      style={{ width: "18px", height: "18px" }}
+                    />
                   </S.ToolsButton>
                   <S.ToolsButton>
-                    <S.ToolsIcons src={link} alt="link" />
+                    <S.ToolsIcons
+                      src={link}
+                      alt="link"
+                      style={{ width: "18px", height: "18px" }}
+                    />
                   </S.ToolsButton>
                 </S.ToolBox>
 
                 <S.ButtonBox>
                   <Link to="/" style={{ textDecorationLine: "none" }}>
-                    <S.ProfileButton>
+                    <Button
+                      name="프로필"
+                      imgName="arrow-down"
+                      imgSize={18}
+                      defaultIcon
+                    />
+                    {/* <S.ProfileButton>
                       <div
                         style={{
                           marginLeft: "10px",
@@ -81,12 +100,19 @@ const Details = () => {
                         프로필
                       </div>
                       <S.ProfileIcon src={arrowDown} alt="arrow-down" />
-                    </S.ProfileButton>
+                    </S.ProfileButton> */}
                   </Link>
-
+                  <Button
+                    name="저장"
+                    primary
+                    style={{
+                      width: "40px",
+                    }}
+                  />
+                  {/* 
                   <S.SaveButton>
                     <div>저장</div>
-                  </S.SaveButton>
+                  </S.SaveButton> */}
                 </S.ButtonBox>
               </S.PinHeader>
 
@@ -109,9 +135,19 @@ const Details = () => {
                       <S.WriterText style={{ fontWeight: "700" }}>
                         이름
                       </S.WriterText>
-                      <S.WriterText>팔로워 0명</S.WriterText>
+                      <S.WriterText style={{ color: "gray" }}>
+                        팔로워 0명
+                      </S.WriterText>
                     </S.WriterTexts>
-                    <S.FollowButton>팔로우</S.FollowButton>
+                    <Button
+                      name="팔로우"
+                      default
+                      style={{
+                        width: "90px",
+                        backgroundColor: "#F1F1F1",
+                      }}
+                    />
+                    {/* <S.FollowButton>팔로우</S.FollowButton> */}
                   </S.WriterInfo>
 
                   <CommentContainer />

@@ -21,8 +21,10 @@ export default Button;
 
 const ButtonBox = styled.div`
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    text-align: center;
     color: black;
     font-size: 16px;
     font-weight: 700;

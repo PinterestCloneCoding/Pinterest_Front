@@ -5,6 +5,7 @@ import * as S from "./CommentBox.style";
 import arrowDown from "./../../assets/arrow-down.svg";
 import ellipsis from "./../../assets/ellipsis_gray.svg";
 import like from "./../../assets/like_gray.svg";
+import Button from "../common/Button/Button";
 
 const CommentBox = () => {
   const [isDrop, setIsDrop] = useState(false);
@@ -17,15 +18,22 @@ const CommentBox = () => {
   return (
     <div>
       <S.CommentCount>
-        <div style={{ fontWeight: "700", fontSize: "27px" }}>댓글 4개</div>
+        <div style={{ fontWeight: "700", fontSize: "20px" }}>댓글 4개</div>
         <S.CommentButton onClick={() => dropComment()}>
-          <S.CommentIcon
+          <Button
+            imgName="arrow-down"
+            imgSize={16}
+            style={{
+              transform: isDrop ? "none" : "rotate(270deg)",
+            }}
+          />
+          {/* <S.CommentIcon
             src={arrowDown}
             alt="arrow-down"
             style={{
               transform: isDrop ? "none" : "rotate(270deg)",
             }}
-          />
+          /> */}
         </S.CommentButton>
       </S.CommentCount>
 
@@ -71,12 +79,16 @@ const CommentBox = () => {
                     style={{
                       width: "20px",
                       height: "20px",
+                      margin: "0px 6px"
                     }}
                   />
                   200
                 </S.CommentText>
                 <S.CommentText>
-                  <S.CommentIcon src={ellipsis} alt="ellipsis" />
+                  <S.CommentIcon 
+                    src={ellipsis} alt="ellipsis" 
+                    style={{ width: "16px", height: "16px" }}
+                  />
                 </S.CommentText>
               </S.CommentBottom>
             </S.CommentInfo>
