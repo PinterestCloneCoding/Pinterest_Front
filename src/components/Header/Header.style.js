@@ -67,3 +67,24 @@ export const SearchBox = styled.div`
         outline: none;
     }
 `;
+
+export const StyledProfileBox = styled.div`
+    width: 48px;
+    height: 48px;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #F1F1F1;
+    }
+`;
+
+export const StyledProfile = styled.img`
+    width: 28px;
+    height: 28px;
+    clip-path: circle();
+`;

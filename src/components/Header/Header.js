@@ -1,5 +1,7 @@
 import * as S from "./Header.style";
 import { db, authService } from "../../firebase";
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import {
   collection,
   connectFirestoreEmulator,
@@ -12,14 +14,17 @@ import Button from "../common/Button/Button";
 import NoticeModal from "../Modal/NoticeModal/NoticeModal";
 import AccountModal from "../Modal/AccountModal/AccountModal";
 
-import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Header = () => {
   const [input, setInput] = useState(" ");
   const [user, setUser] = useState(null);
   const [noticeModal, SetNoticeModal] = useState(false);
   const [accountModal, SetAccountModal] = useState(false);
+
+  const { pinId } = useParams();
+  const [pinData, setPinData] = useState([]);
+  const [selectedPin, setSelectedPin] = useState(undefined);
+  const [profileImage, setProfileImage] = useState();
 
   const handleGoogleLogin = () => {
     const provider = new GoogleAuthProvider();
@@ -43,6 +48,38 @@ const Header = () => {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    const fetchPinData = async () => {
+      const pinsCollection = collection(db, "photo");
+      const pinsSnapshot = await getDocs(pinsCollection);
+      const newPinData = [];
+      pinsSnapshot.forEach((doc) => {
+        const pin = {
+          id: doc.id,
+          ...doc.data(),
+        };
+        newPinData.push(pin);
+      });
+      setPinData(newPinData);
+    };
+
+    fetchPinData();
+  }, []);
+
+  useEffect(() => {
+    setSelectedPin(pinData.find((pin) => pin.id === pinId));
+  }, [pinData, pinId]);
+
+  useEffect(() => {
+    const unsubscribe = authService.onAuthStateChanged((user) => {
+      console.log(user);
+
+      setProfileImage(user.photoURL);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <S.HeaderBox>
@@ -82,7 +119,9 @@ const Header = () => {
       {noticeModal && <NoticeModal />}
       {user ? (
         <Link to={`/user`}>
-          <Button imgName="profile-image" imgSize={24} Icon />
+          <S.StyledProfileBox>
+            <S.StyledProfile src={profileImage} alt="user profile" />
+          </S.StyledProfileBox>
         </Link>
       ) : (
         <Button name="로그인" primary onClick={handleGoogleLogin} />
