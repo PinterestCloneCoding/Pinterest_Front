@@ -1,13 +1,4 @@
-import { styled } from "styled-components";
-import {
-  ref,
-  getStorage,
-  listAll,
-  getDownloadURL,
-  uploadBytes,
-} from "firebase/storage";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { storage, db, app } from "../../firebase";
 import {
   addDoc,
@@ -17,11 +8,13 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
+import { ref, getStorage, getDownloadURL, uploadBytes } from "firebase/storage";
+import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import Button from "../common/Button/Button";
-import { useRef } from "react";
-import { Link } from "react-router-dom";
 
 const HandleImageUpload = () => {
+  const navigate = useNavigate();
   const fileInput = useRef(null);
 
   const [imageUpload, setImageUpload] = useState(null);
@@ -29,17 +22,25 @@ const HandleImageUpload = () => {
   const [imageList, setImageList] = useState([]);
   const [uploadStep, setUploadStep] = useState(1);
 
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [link, setLink] = useState("");
+
+  const [change, setChange] = useState(0);
+
   // div를 클릭해도 input이 실행될 수 있게
   const onClickUpload = () => {
     fileInput.current?.click();
   };
 
-  const selectFile = (file) => {
+  const selectFile = (event) => {
+    const file = event.target.files[0];
     setImageUpload(file);
     setUploadStep(2);
+    setChange(1);
   };
 
-  // 파일이 업로드 되면 스토리지에 업로드하고 다운하는 즉시 이미지 보여주는 함수
+  // 파일이 업로드 되면 스토리지에 업로드하고 다운로드 URL을 가져와 이미지를 보여주는 함수
   useEffect(() => {
     if (imageUpload) {
       const storageRef = ref(storage, `photo/${imageUpload.name}`);
@@ -54,13 +55,22 @@ const HandleImageUpload = () => {
   // 파이어베이스에 이미지 저장
   const uploadImgUrl = async () => {
     await addDoc(collection(db, "photo"), {
+      title: title,
+      description: description,
+      link: link,
       imgUrl: image,
       timestamp: new Date(),
     });
+
+    setTitle("");
+    setDescription("");
+    setLink("");
     fetchImages();
     setImageUpload(null);
     setImage("");
     setUploadStep(1);
+
+    navigate(`/`);
   };
 
   async function fetchImages() {
@@ -78,11 +88,31 @@ const HandleImageUpload = () => {
 
   return (
     <>
-      {image ? (
+      {change ? (
         <ModalBox>
-          <ShowImageArea style={{ backgroundImage: `url(${image})` }}>
-            제발업로드돼랃제발요
-          </ShowImageArea>
+          <ShowImageArea
+            style={{ backgroundImage: `url(${image})` }}
+          ></ShowImageArea>
+
+          <input
+            type="text"
+            placeholder="제목"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="설명"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="링크"
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
+          />
+          <button onClick={uploadImgUrl}>게시</button>
         </ModalBox>
       ) : (
         <ModalBox>
@@ -98,12 +128,11 @@ const HandleImageUpload = () => {
               <UploadArea onClick={onClickUpload}>
                 <input
                   type="file"
-                  onChange={(event) => {
-                    selectFile(event.target.files[0]);
-                  }}
+                  onChange={selectFile}
                   ref={fileInput}
                   style={{ display: "none" }}
                 />
+
                 <Button imgName="arrow-circle-up" Icon>
                   업로드
                 </Button>
@@ -233,6 +262,11 @@ const ImageList = styled.div`
 `;
 
 const ShowImageArea = styled.div`
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin: 10px;
+
   background-size: "cover";
   background-repeat: no-repeat;
   background-position: "center";
