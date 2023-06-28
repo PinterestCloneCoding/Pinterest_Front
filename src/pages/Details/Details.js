@@ -12,12 +12,36 @@ import CommentContainer from "../../components/Details/CommentBox";
 // 곧 지울거
 import PinData from "../../mocks/dummy";
 import MediaPin from "../../components/common/MediaPin/MediaPin";
+import { useEffect, useState } from "react";
+
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 import Button from "../../components/common/Button/Button";
 
 const Details = () => {
+  const [pinData, setPinData] = useState([]);
+
   const breakpointColumnsObj = {
     default: 5,
   };
+
+  useEffect(() => {
+    const fetchPinData = async () => {
+      const pinsCollection = collection(db, "photo");
+      const pinsSnapshot = await getDocs(pinsCollection);
+      const newPinData = [];
+      pinsSnapshot.forEach((doc) => {
+        const pin = {
+          id: doc.id,
+          ...doc.data(),
+        };
+        newPinData.push(pin);
+      });
+      setPinData(newPinData);
+    };
+
+    fetchPinData();
+  }, []);
 
   const { pinId } = useParams();
 
@@ -37,20 +61,23 @@ const Details = () => {
               <S.PinHeader>
                 <S.ToolBox>
                   <S.ToolsButton>
-                    <S.ToolsIcons 
-                      src={ellipsis} alt="ellipsis" 
+                    <S.ToolsIcons
+                      src={ellipsis}
+                      alt="ellipsis"
                       style={{ width: "18px", height: "18px" }}
                     />
                   </S.ToolsButton>
                   <S.ToolsButton>
-                    <S.ToolsIcons 
-                      src={download} alt="download" 
+                    <S.ToolsIcons
+                      src={download}
+                      alt="download"
                       style={{ width: "18px", height: "18px" }}
                     />
                   </S.ToolsButton>
                   <S.ToolsButton>
-                    <S.ToolsIcons 
-                      src={link} alt="link" 
+                    <S.ToolsIcons
+                      src={link}
+                      alt="link"
                       style={{ width: "18px", height: "18px" }}
                     />
                   </S.ToolsButton>
@@ -59,7 +86,11 @@ const Details = () => {
                 <S.ButtonBox>
                   <Link to="/" style={{ textDecorationLine: "none" }}>
                     <Button
-                      name="프로필" imgName="arrow-down" imgSize={18} defaultIcon />
+                      name="프로필"
+                      imgName="arrow-down"
+                      imgSize={18}
+                      defaultIcon
+                    />
                     {/* <S.ProfileButton>
                       <div
                         style={{
@@ -72,12 +103,13 @@ const Details = () => {
                     </S.ProfileButton> */}
                   </Link>
                   <Button
-                    name="저장" primary
+                    name="저장"
+                    primary
                     style={{
-                      width: "40px"
+                      width: "40px",
                     }}
                   />
-                {/* 
+                  {/* 
                   <S.SaveButton>
                     <div>저장</div>
                   </S.SaveButton> */}
@@ -103,13 +135,16 @@ const Details = () => {
                       <S.WriterText style={{ fontWeight: "700" }}>
                         이름
                       </S.WriterText>
-                      <S.WriterText style={{ color: "gray" }}>팔로워 0명</S.WriterText>
+                      <S.WriterText style={{ color: "gray" }}>
+                        팔로워 0명
+                      </S.WriterText>
                     </S.WriterTexts>
                     <Button
-                      name="팔로우" default
+                      name="팔로우"
+                      default
                       style={{
                         width: "90px",
-                        backgroundColor: "#F1F1F1"
+                        backgroundColor: "#F1F1F1",
                       }}
                     />
                     {/* <S.FollowButton>팔로우</S.FollowButton> */}
@@ -137,13 +172,13 @@ const Details = () => {
 
       <S.Wrapper>
         <S.MyMasonryGrid breakpointCols={breakpointColumnsObj}>
-          {PinData &&
-            PinData.map((item) => (
-              <div key={item.id}>
+          {pinData &&
+            pinData.map((item, index) => (
+              <div key={index}>
                 <S.StyledLink to={`/pin/${item.id}`}>
                   <MediaPin
                     title={item.title}
-                    pinImg={item.pinImg}
+                    pinImg={item.imgUrl}
                     profileImg={item.profileImg}
                     userName={item.userName}
                   />
