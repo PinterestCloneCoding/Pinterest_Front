@@ -29,6 +29,11 @@ const ButtonBox = styled.div`
     border-radius: 35px;
     border: none;
 
+    &:hover {
+        cursor: pointer;
+        background-color: #F1F1F1;
+    }
+
     ${(props) =>
         // ex) 홈 버튼
         props.default &&
@@ -88,11 +93,5 @@ const ButtonBox = styled.div`
             padding: 8px 6px;
         `
     }
-
-    &:hover {
-        cursor: pointer;
-        background-color: #F1F1F1;
-    }
-
     gap: 0px 10px;    
 `;
