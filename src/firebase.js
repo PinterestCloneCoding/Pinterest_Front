@@ -7,13 +7,13 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDRgZSlEn5XBEApV59LF2GKEjnoOdAKpGI",
-  authDomain: "pinterclone.firebaseapp.com",
-  projectId: "pinterclone",
-  storageBucket: "pinterclone.appspot.com",
-  messagingSenderId: "1049084566422",
-  appId: "1:1049084566422:web:c7addcd6c3a93248fd1bb7",
-  measurementId: "G-94MLEME0TY"
+  apiKey: "AIzaSyAbvgQM_YfY4RqkAOpLgY81W6VvRZl5rOo",
+  authDomain: "bssm-33974.firebaseapp.com",
+  projectId: "bssm-33974",
+  storageBucket: "bssm-33974.appspot.com",
+  messagingSenderId: "934342225381",
+  appId: "1:934342225381:web:7c4a15ed3eba10d4ced30c",
+  measurementId: "G-N9S8NDGLS6",
 };
 
 const app = initializeApp(firebaseConfig);
