@@ -95,10 +95,8 @@ const HandleImageUpload = () => {
   useEffect(() => {
     const unsubscribe = authService.onAuthStateChanged((user) => {
       console.log(user);
-      // if (user) {
       setNickname(user.displayName);
       setProfileImage(user.photoURL);
-      // }
     });
 
     return () => unsubscribe();
