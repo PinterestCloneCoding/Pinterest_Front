@@ -2,6 +2,7 @@ import * as S from "./Details.style";
 import backArrow from "./../../assets/directional-arrow-left.svg";
 import download from "./../../assets/download.svg";
 import ellipsis from "./../../assets/ellipsis.svg";
+import Button from "../../components/common/Button/Button";
 
 import link from "./../../assets/link.svg";
 import arrowDown from "./../../assets/arrow-down.svg";
@@ -20,7 +21,6 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { authService, db } from "../../firebase";
-import Button from "../../components/common/Button/Button";
 
 const Details = () => {
   const { pinId } = useParams();
@@ -219,14 +219,14 @@ const Details = () => {
 
                   <CommentContainer comments={comments} />
 
-                  <div>
-                    <input
+                  <S.CommentPostBox>
+                    <S.CommentInput
                       placeholder="댓글을 입력하세요"
                       value={commentText}
                       onChange={(e) => setCommentText(e.target.value)}
                     />
-                    <button onClick={submitComment}>등록</button>
-                  </div>
+                    <Button name="등록" onClick={submitComment} primary style={{ width: "50px" }} />
+                  </S.CommentPostBox>
                 </S.PinFooter>
               </S.ScrollBox>
             </S.PinChatBox>

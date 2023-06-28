@@ -176,8 +176,7 @@ export const InnerText = styled.p`
 `;
 
 export const PinFooter = styled.div`
-  margin: 50px auto auto 20px;
-  width: 90;
+  margin: 20px auto auto 20px;
   flex-direction: column;
 `;
 
@@ -237,4 +236,17 @@ export const MyMasonryGrid = styled(Masonry)`
   display: flex;
   margin-left: -15px;
   width: auto;
+`;
+
+export const CommentPostBox = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const CommentInput = styled.input`
+  border: 2px solid #e7e7e7;
+  width: 330px;
+  height: 40px;
+  border-radius: 30px;
+  padding: 4px 16px;
 `;

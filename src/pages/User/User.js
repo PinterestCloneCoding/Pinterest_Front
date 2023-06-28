@@ -32,6 +32,26 @@ const User = () => {
           id: doc.id,
           ...doc.data(),
         };
+        if (pin.nickname === nickname) {
+          newPinData.push(pin);
+        }
+      });
+      setPinData(newPinData);
+    };
+
+    fetchPinData();
+  }, [nickname]);
+
+  useEffect(() => {
+    const fetchPinData = async () => {
+      const pinsCollection = collection(db, "photo");
+      const pinsSnapshot = await getDocs(pinsCollection);
+      const newPinData = [];
+      pinsSnapshot.forEach((doc) => {
+        const pin = {
+          id: doc.id,
+          ...doc.data(),
+        };
         newPinData.push(pin);
       });
       setPinData(newPinData);

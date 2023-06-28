@@ -115,16 +115,10 @@ const HandleImageUpload = () => {
                 justifyContent: "flex-end",
               }}
             >
-              <Button
-                name="게시"
-                onClick={uploadImgUrl}
-                primary
-                style={{ width: "50px" }}
-              />
             </div>
           </UploadHeader>
           <ModalBox
-            style={{ display: "flex", marginRight: "auto", marginTop: "150px" }}
+            style={{ display: "flex", marginRight: "auto", backgroundColor: "white", height: "90%", marginTop: "100px" }}
           >
             <ShowImageArea
               style={{
@@ -133,6 +127,20 @@ const HandleImageUpload = () => {
             ></ShowImageArea>
 
             <InputFieldArea>
+            <div style={{
+              width: "600px",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-end"
+            }}>
+              <Button
+                  name="게시"
+                  onClick={uploadImgUrl}
+                  primary
+                  style={{ width: "50px" }}
+              />
+            </div>
+
               <InputText>제목</InputText>
               <StyledInput
                 type="text"
@@ -157,7 +165,7 @@ const HandleImageUpload = () => {
                 onChange={(e) => setLink(e.target.value)}
               />
             </InputFieldArea>
-          </ModalBox>
+          </ModalBox> 
         </>
       ) : (
         <ModalBox>
@@ -189,11 +197,6 @@ const HandleImageUpload = () => {
                   Pinterest는 20MB 미만의 고화질 .jpg 파일 또는 100MB 미만의
                   .mp4 파일 사용을 권장합니다.
                 </Tip>
-                {/* <ImageList>
-                {imageList.map((imageUrl, index) => (
-                <img key={index} src={imageUrl} alt={`Image ${index}`} />
-                ))}
-            </ImageList> */}
               </UploadArea>
             </UploadBox>
           </ImgUploadArea>
@@ -211,14 +214,14 @@ const HandleImageUpload = () => {
 export default HandleImageUpload;
 
 const UploadHeader = styled.div`
-  position: fixed;
+  /* position: fixed;
 
   width: 100%;
   height: 100px;
   top: 70px;
   left: 100px;
   background-color: aliceblue;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid gray; */
 `;
 
 const ModalBox = styled.div`
@@ -229,7 +232,7 @@ const ModalBox = styled.div`
   background-color: white;
   box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.05);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
   gap: 4px;
