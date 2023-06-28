@@ -1,22 +1,66 @@
 import styled, { css } from "styled-components";
 import LoginedAccount from "./LoginedAccount";
 import Button from "../../common/Button/Button";
+import { Link, useParams } from "react-router-dom";
+import {
+    addDoc,
+    collection,
+    getDocs,
+    serverTimestamp,
+  } from "firebase/firestore";
+import { authService, db } from "../../../firebase";
+import { useEffect, useState } from "react";
+
 
 const AccountModal = () => {
-    const Logout = () => {
-        
-    }
+    const [profileImage, setProfileImage] = useState("");
+    const [nickname, setNickname] = useState("");
+    const [email, setEmail] = useState("");
+  
+    const { pinId } = useParams();
+    const [pinData, setPinData] = useState([]);
 
+  
+    useEffect(() => {
+      const fetchPinData = async () => {
+        const pinsCollection = collection(db, "photo");
+        const pinsSnapshot = await getDocs(pinsCollection);
+        const newPinData = [];
+        pinsSnapshot.forEach((doc) => {
+          const pin = {
+            id: doc.id,
+            ...doc.data(),
+          };
+          newPinData.push(pin);
+        });
+        setPinData(newPinData);
+      };
+  
+      fetchPinData();
+    }, []);
+  
+    useEffect(() => {
+      const unsubscribe = authService.onAuthStateChanged((user) => {
+        console.log(user);
+  
+        setNickname(user.displayName);
+        setProfileImage(user.photoURL);
+        setEmail(user.email);
+        });
+  
+      return () => unsubscribe();
+    }, []);
+  
     return (
         <ModalBox>
             <LoginAccountBox>
                 <p>현재 로그인 계정</p>
                 <MyAccount>
                     <LoginedAccount 
-                        img="https://i.pinimg.com/75x75_RS/0d/ed/62/0ded62789da5f40da84cde772d479d9a.jpg"
-                        name="설아 원"
-                        personnel={true}
-                        email="2022044@bssm.hs.kr"
+                        img={profileImage}
+                        name={nickname}
+                        personnal={true}
+                        email={email}
                     />
                 </MyAccount>
             </LoginAccountBox>
@@ -35,7 +79,7 @@ const AccountModal = () => {
                     <Button name="서비스 약관 보기" defaultLong />
                     <Button name="개인정보 보호정책 보기" defaultLong />
                     <Button name="베타 테스터 되기" defaultLong />
-                    <Button name="로그아웃" defaultLong onClick={Logout} />
+                    <Button name="로그아웃" defaultLong />
             </MoreOptionBox>
         </ModalBox>
     )

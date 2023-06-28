@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
 
-const LoginedAccount = ({img, name, personnel, email}) => {
+const LoginedAccount = ({img, name, personnal, email}) => {
     return (
         <AccountBox>
             <ProfileImg src={img}/>
             <ProfileInfo>
                 <NameInfo>{name}</NameInfo>
-                {personnel ? <p>개인</p> : <p>팀</p>}
+                {personnal ? <p>개인</p> : <p>팀</p>}
                 <p>{email}</p>
             </ProfileInfo>
         </AccountBox>
