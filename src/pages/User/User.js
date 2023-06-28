@@ -85,7 +85,7 @@ const User = () => {
 
       {/* 유저의 핀 보여주는 부분 */}
       <PinsArea>
-        {createdPin | savedPin &&       
+        {savedPin &&       
           <PinButtonBox style={{ justifyContent: "space-between" }}>
             <>
               <Button imgName="filter" imgSize={20} Icon />
