@@ -5,7 +5,7 @@ const UpdateContent = ({topic, count, date, url1, url2, url3}) => {
         <ContentBox>
             <TitleArea>
                 회원님이 좋아할 만한 <b>{topic}</b> 관련 핀 {count}개 
-                <DateSpan>{date}일</DateSpan>
+                <DateSpan> · {date}일</DateSpan>
             </TitleArea>
             <ContentImages>
                     <ContentImg1 src={url1} />
@@ -21,10 +21,16 @@ export default UpdateContent;
 const ContentBox = styled.div`
     display: flex;
     flex-direction: column;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
-const TitleArea = styled.div`
 
+
+const TitleArea = styled.div`
+    font-size: 16px;
 `;
 
 const DateSpan = styled.span`
@@ -32,27 +38,34 @@ const DateSpan = styled.span`
 `;
 
 const ContentImages = styled.div`
-    width: 300px;
-    height: 250px;
-    
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
+  width: 300px;
+  height: auto;
+  margin: 20px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  img {
+    width: calc((100% - 20px) / 3);
+    height: 180px;
+    object-fit: cover;
+  }
 `;
 
+
 const ContentImg1 = styled.img`
-    clip-path: inset(0px 88px 140px 0px);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 `;
 
 const ContentImg2 = styled.img`
-    clip-path: inset(0px 88px 140px 0px);
+
 `;
 
 const ContentImg3 = styled.img`
-    clip-path: inset(0px 88px 140px 0px);
-`;
-
-const ContentImgBox = styled.div`
-    clip: rect(0px 88px 140px 0px);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 `;
