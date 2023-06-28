@@ -10,7 +10,6 @@ import { Link, useParams } from "react-router-dom";
 import CommentContainer from "../../components/Details/CommentBox";
 
 // 곧 지울거
-import PinData from "../../mocks/dummy";
 import MediaPin from "../../components/common/MediaPin/MediaPin";
 import { useEffect, useState } from "react";
 
