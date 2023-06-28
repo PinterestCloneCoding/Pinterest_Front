@@ -28,6 +28,8 @@ const Details = () => {
   const [nickname, setNickname] = useState("");
   const [commentText, setCommentText] = useState("");
 
+  const [comments, setComments] = useState([]);
+
   const [pinData, setPinData] = useState([]);
   const [selectedPin, setSelectedPin] = useState(undefined);
   const breakpointColumnsObj = {
@@ -56,10 +58,26 @@ const Details = () => {
         };
         newPinData.push(pin);
       });
+
       setPinData(newPinData);
     };
 
+    const fetchComments = async () => {
+      const commentsCollection = collection(db, "comments");
+      const commentsSnapshot = await getDocs(commentsCollection);
+      const newComments = [];
+      commentsSnapshot.forEach((doc) => {
+        const comment = {
+          id: doc.id,
+          ...doc.data(),
+        };
+        newComments.push(comment);
+      });
+      setComments(newComments);
+    };
+
     fetchPinData();
+    fetchComments();
   }, []);
 
   useEffect(() => {
@@ -199,7 +217,7 @@ const Details = () => {
                     {/* <S.FollowButton>팔로우</S.FollowButton> */}
                   </S.WriterInfo>
 
-                  <CommentContainer />
+                  <CommentContainer comments={comments} />
 
                   <div>
                     <input
