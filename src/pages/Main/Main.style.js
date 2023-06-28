@@ -15,12 +15,12 @@ export const Wrapper = styled.div`
   background-color: white;
   width: 100%;
   height: 100%;
-  margin: 0 auto;
-  margin-top: 15px;
+  margin: 0 15px;
+  margin-top: 7%;
 `;
 
 export const MyMasonryGrid = styled(Masonry)`
   display: flex;
   margin-left: -15px;
-  width: auto;
+  width: 1500px;
 `;
