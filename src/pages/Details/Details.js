@@ -18,6 +18,8 @@ import { db } from "../../firebase";
 import Button from "../../components/common/Button/Button";
 
 const Details = () => {
+  const { pinId } = useParams();
+
   const [pinData, setPinData] = useState([]);
 
   const breakpointColumnsObj = {
@@ -42,7 +44,11 @@ const Details = () => {
     fetchPinData();
   }, []);
 
-  const { pinId } = useParams();
+  const selectedPin = pinData.find((pin) => pin.id === pinId);
+
+  useEffect(() => {
+    console.log(selectedPin);
+  }, [pinData]);
 
   return (
     <>
@@ -54,7 +60,7 @@ const Details = () => {
 
       <S.Section>
         <S.Pin>
-          <S.PinImg alt="" />
+          <S.PinImg alt="" src={selectedPin.imgUrl} />
           <S.PinChat>
             <S.PinChatBox>
               <S.PinHeader>
@@ -118,21 +124,18 @@ const Details = () => {
               <S.ScrollBox>
                 <S.Description>
                   <S.LinkText>
-                    <S.PageLink href="">히히 링크</S.PageLink>
+                    <S.PageLink href="">{selectedPin.link}</S.PageLink>
                   </S.LinkText>
-                  <S.Title>히히 제목</S.Title>
-                  <S.InnerText>
-                    히히 내용히히 내용히히 내용히히 내용히히 내용히히 내용히히
-                    내용히히 내용히히 내용히히 내용
-                  </S.InnerText>
+                  <S.Title>{selectedPin.title}</S.Title>
+                  <S.InnerText>{selectedPin.description} </S.InnerText>
                 </S.Description>
 
                 <S.PinFooter>
                   <S.WriterInfo>
-                    <S.WriterImg alt="" />
+                    <S.WriterImg alt="" src={selectedPin.profileImage} />
                     <S.WriterTexts>
                       <S.WriterText style={{ fontWeight: "700" }}>
-                        이름
+                        {selectedPin.nickname}
                       </S.WriterText>
                       <S.WriterText style={{ color: "gray" }}>
                         팔로워 0명
