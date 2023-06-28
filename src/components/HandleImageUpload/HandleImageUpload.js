@@ -112,25 +112,38 @@ const HandleImageUpload = () => {
             style={{ backgroundImage: `url(${image})` }}
           ></ShowImageArea>
 
-          <input
-            type="text"
-            placeholder="제목"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="설명"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="링크"
-            value={link}
-            onChange={(e) => setLink(e.target.value)}
-          />
-          <button onClick={uploadImgUrl}>게시</button>
+          <InputFieldArea>
+            <InputText>
+              제목
+            </InputText>
+            <StyledInput
+              type="text"
+              placeholder="제목 추가"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+
+            <InputText>
+              설명
+            </InputText>
+            <StyledInput
+              type="text"
+              placeholder="여기에 핀에 대한 상세 설명을 작성하거나 아래에 특정 목록을 추가하세요"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+
+            <InputText>
+              링크
+            </InputText>
+            <StyledInput
+              type="text"
+              placeholder="링크 추가"
+              value={link}
+              onChange={(e) => setLink(e.target.value)}
+            />
+            <Button name="게시" onClick={uploadImgUrl} primary style={{ width: "50px" }} />
+          </InputFieldArea>
         </ModalBox>
       ) : (
         <ModalBox>
@@ -195,6 +208,12 @@ const ModalBox = styled.div`
   justify-content: space-around;
   align-items: center;
   gap: 4px;
+`;
+
+const PostingBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 const ModalTopBox = styled.div`
@@ -280,8 +299,6 @@ const ImageList = styled.div`
 `;
 
 const ShowImageArea = styled.div`
-  width: 200px;
-  height: 200px;
   object-fit: cover;
   margin: 10px;
 
@@ -291,4 +308,24 @@ const ShowImageArea = styled.div`
 
   width: 100%;
   height: 100%;
+`;
+
+const StyledInput = styled.input`
+  border-radius: 15px;
+  border: 2px solid lightgray;
+  padding: 4px 6px;
+  width: 600px;
+  height: 40px;
+
+  &:hover {
+    border-color: gray;
+  }
+`;
+
+const InputFieldArea = styled.div`
+
+`;
+
+const InputText = styled.p`
+  font-size: 16px;
 `;
