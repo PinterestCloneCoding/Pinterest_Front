@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { styled } from "styled-components";
+import DummyPinData from "../../mocks/dummy";
 
 const Main = () => {
   const [pinData, setPinData] = useState([]);
@@ -34,7 +35,7 @@ const Main = () => {
   return (
     <S.Wrapper>
       <S.MyMasonryGrid breakpointCols={breakpointColumnsObj}>
-        {pinData &&
+        {/* {pinData &&
           pinData.map((item, index) => (
             <div key={index}>
               <StyledLink to={`/pin/${item.id}`}>
@@ -46,7 +47,21 @@ const Main = () => {
                 />
               </StyledLink>
             </div>
-          ))}
+          ))} */}
+          {DummyPinData && 
+            DummyPinData.map((item, index) => (
+                <div key={index}>
+                <StyledLink to={`/pin/${item.id}`}>
+                  <MediaPin
+                    title={item.title}
+                    pinImg={item.pinImg}
+                    profileImg={item.profileImg}
+                    userName={item.userName}
+                  />
+                </StyledLink>
+              </div>
+            ))
+          }
       </S.MyMasonryGrid>
     </S.Wrapper>
   );

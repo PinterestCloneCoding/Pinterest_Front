@@ -11,8 +11,18 @@ const Create = () => {
     <CreateBox>
       <MenuBar>
         <MenuBox>
-          <Button imgName="double-arrow-forward" imgSize={18} Icon />
-          <Button imgName="add" imgSize={18} Icon />
+          <Button
+            style={{ width: "100px", height: "100px" }}
+            imgName="double-arrow-forward"
+            imgSize={25}
+            Icon
+          />
+          <Button
+            style={{ width: "100px", height: "100px" }}
+            imgName="add"
+            imgSize={25}
+            Icon
+          />
         </MenuBox>
       </MenuBar>
       <CreateArea>
@@ -36,21 +46,29 @@ const Create = () => {
 export default Create;
 
 const CreateBox = styled.div`
-  /* width: 1536px; */
   height: 100%;
 `;
 
 const MenuBar = styled.div`
-  width: 60px;
+  position: fixed;
+
+  margin: 0px;
+  top: 70px;
+  left: 0%;
+  width: 100px;
+  height: 100%;
+
   border-right: 1px solid gray;
 `;
 
 const MenuBox = styled.div`
-  width: 60px;
+  flex-direction: column;
+  width: 100%;
   border-bottom: 1px solid gray;
 `;
 
 const CreateArea = styled.div`
+  margin-top: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;

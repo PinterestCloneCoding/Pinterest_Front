@@ -105,44 +105,68 @@ const HandleImageUpload = () => {
   return (
     <>
       {change ? (
-        <ModalBox>
-          <ShowImageArea
-            style={{ backgroundImage: `url(${image})` }}
-          ></ShowImageArea>
+        <>
+          <UploadHeader>
+            <div
+              style={{
+                height: "100%",
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+            </div>
+          </UploadHeader>
+          <ModalBox
+            style={{ flexDirection: "row", marginRight: "auto", backgroundColor: "white", height: "90%", marginTop: "100px" }}
+          >
+            <ShowImageArea
+              style={{
+                backgroundImage: `url(${image})`,
+              }}
+            ></ShowImageArea>
 
-          <InputFieldArea>
-            <InputText>
-              제목
-            </InputText>
-            <StyledInput
-              type="text"
-              placeholder="제목 추가"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+            <InputFieldArea>
+            <div style={{
+              width: "600px",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-end"
+            }}>
+              <Button
+                  name="게시"
+                  onClick={uploadImgUrl}
+                  primary
+                  style={{ width: "50px" }}
+              />
+            </div>
 
-            <InputText>
-              설명
-            </InputText>
-            <StyledInput
-              type="text"
-              placeholder="여기에 핀에 대한 상세 설명을 작성하거나 아래에 특정 목록을 추가하세요"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
+              <InputText>제목</InputText>
+              <StyledInput
+                type="text"
+                placeholder="제목 추가"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
 
-            <InputText>
-              링크
-            </InputText>
-            <StyledInput
-              type="text"
-              placeholder="링크 추가"
-              value={link}
-              onChange={(e) => setLink(e.target.value)}
-            />
-            <Button name="게시" onClick={uploadImgUrl} primary style={{ width: "50px" }} />
-          </InputFieldArea>
-        </ModalBox>
+              <InputText>설명</InputText>
+              <StyledInput
+                type="text"
+                placeholder="여기에 핀에 대한 상세 설명을 작성하거나 아래에 특정 목록을 추가하세요"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+
+              <InputText>링크</InputText>
+              <StyledInput
+                type="text"
+                placeholder="링크 추가"
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+              />
+            </InputFieldArea>
+          </ModalBox> 
+        </>
       ) : (
         <ModalBox>
           <ModalTopBox>
@@ -173,11 +197,6 @@ const HandleImageUpload = () => {
                   Pinterest는 20MB 미만의 고화질 .jpg 파일 또는 100MB 미만의
                   .mp4 파일 사용을 권장합니다.
                 </Tip>
-                {/* <ImageList>
-                {imageList.map((imageUrl, index) => (
-                <img key={index} src={imageUrl} alt={`Image ${index}`} />
-                ))}
-            </ImageList> */}
               </UploadArea>
             </UploadBox>
           </ImgUploadArea>
@@ -193,6 +212,17 @@ const HandleImageUpload = () => {
 };
 
 export default HandleImageUpload;
+
+const UploadHeader = styled.div`
+  /* position: fixed;
+
+  width: 100%;
+  height: 100px;
+  top: 70px;
+  left: 100px;
+  background-color: aliceblue;
+  border-bottom: 1px solid gray; */
+`;
 
 const ModalBox = styled.div`
   position: fixed;
@@ -301,11 +331,14 @@ const ShowImageArea = styled.div`
   margin: 10px;
 
   background-size: "cover";
+
   background-repeat: no-repeat;
   background-position: "center";
 
   width: 100%;
   height: 100%;
+
+  background-size: 375px 390.807px;
 `;
 
 const StyledInput = styled.input`
@@ -321,7 +354,7 @@ const StyledInput = styled.input`
 `;
 
 const InputFieldArea = styled.div`
-
+  width: 50%;
 `;
 
 const InputText = styled.p`
