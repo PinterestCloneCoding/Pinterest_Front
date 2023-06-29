@@ -21,8 +21,27 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { authService, db } from "../../firebase";
+import DummyPinData from "../../mocks/dummy";
 
 const Details = () => {
+
+  const [user1, setUser] = useState(0);
+
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      console.log(user);
+
+      if(user){
+        console.log("애 이거 비ㅓㅇㅅ어")
+        setUser(1)
+     
+      }
+       console.log("아아아ㅏ앙",user1);
+      });
+  },[]);
+
+
+
   const { pinId } = useParams();
   const [profileImage, setProfileImage] = useState("");
   const [nickname, setNickname] = useState("");
@@ -32,15 +51,16 @@ const Details = () => {
 
   const [pinData, setPinData] = useState([]);
   const [selectedPin, setSelectedPin] = useState(undefined);
+  const [dummySelectedPin, setDummySelectedPin] = useState([]);
+
   const breakpointColumnsObj = {
     default: 5,
   };
 
   useEffect(() => {
     const unsubscribe = authService.onAuthStateChanged((user) => {
-      console.log(user);
       setNickname(user.displayName);
-      setProfileImage(user.photoURL);
+      setProfileImage(user.ImageUrl);
     });
 
     return () => unsubscribe();
@@ -84,6 +104,10 @@ const Details = () => {
     setSelectedPin(pinData.find((pin) => pin.id === pinId));
   }, [pinData, pinId]);
 
+  useEffect(() => {
+    setDummySelectedPin(DummyPinData.find((pin) => pin.id === Number(pinId)));
+     },[]);
+
   const submitComment = async () => {
     try {
       const user = authService.currentUser;
@@ -118,7 +142,13 @@ const Details = () => {
 
       <S.Section>
         <S.Pin>
-          {selectedPin && <S.PinImg alt="" src={selectedPin.imgUrl} />}
+          {selectedPin ? (
+            <S.PinImg alt="" src={selectedPin.imgUrl} />
+          ) : (
+            <>
+            {dummySelectedPin && (<S.PinImg alt=""src={dummySelectedPin.pinImg} />)}
+            </>
+          )}
 
           <S.PinChat>
             <S.PinChatBox>
@@ -155,6 +185,8 @@ const Details = () => {
                       imgSize={18}
                       defaultIcon
                     />
+
+
                     {/* <S.ProfileButton>
                       <div
                         style={{
@@ -181,7 +213,7 @@ const Details = () => {
               </S.PinHeader>
 
               <S.ScrollBox>
-                {selectedPin && (
+                {selectedPin ? (
                   <S.Description>
                     <S.LinkText>
                       <S.PageLink href="">{selectedPin.link}</S.PageLink>
@@ -189,17 +221,51 @@ const Details = () => {
                     <S.Title>{selectedPin.title}</S.Title>
                     <S.InnerText>{selectedPin.description} </S.InnerText>
                   </S.Description>
+                ) : (
+                  <S.Description>
+                    <S.LinkText>
+                      <S.PageLink href=""></S.PageLink>
+                    </S.LinkText>
+
+                    {dummySelectedPin && (<S.Title>{dummySelectedPin.title}</S.Title>)}
+                    
+                  </S.Description>
                 )}
 
                 <S.PinFooter>
                   <S.WriterInfo>
-                    {selectedPin && (
+                    {selectedPin ? (
                       <>
                         <S.WriterImg alt="" src={selectedPin.profileImage} />
                         <S.WriterTexts>
                           <S.WriterText style={{ fontWeight: "700" }}>
                             {selectedPin.nickname}
                           </S.WriterText>
+                          <S.WriterText style={{ color: "gray" }}>
+                            팔로워 0명
+                          </S.WriterText>
+                        </S.WriterTexts>
+                        <Button
+                          name="팔로우"
+                          default
+                          style={{
+                            width: "90px",
+                            backgroundColor: "#F1F1F1",
+                          }}
+                        />
+                      </>
+                    ) : (
+                      <>
+
+                      {dummySelectedPin && ( <S.WriterImg alt="" src={dummySelectedPin.profileImg} />)}
+                        
+                        <S.WriterTexts>
+
+                        {dummySelectedPin && (
+                          <S.WriterText style={{ fontWeight: "700" }}>
+                            {dummySelectedPin.userName}
+                        </S.WriterText>
+                        )}
                           <S.WriterText style={{ color: "gray" }}>
                             팔로워 0명
                           </S.WriterText>
